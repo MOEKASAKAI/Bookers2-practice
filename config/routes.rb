@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
-  devise_for :admins
+  namespace :admins do
+    get 'homes/top'
+  end
+  devise_for :admins, controllers: {
+    sessions: 'admins/sessions'
+  }
+
   get 'chats/show'
   get 'user_rooms/show'
   get 'rooms/show'
@@ -20,7 +26,7 @@ Rails.application.routes.draw do
       get :following, :followers
     end
   end
-  
+
   # ————DM機能—————————————————————————————————
   resources :rooms, only: [:show, :create]
   resources :user_rooms, only: [:show, :create]
