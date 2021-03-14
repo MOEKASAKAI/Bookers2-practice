@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'carts/index'
   namespace :admins do
     get 'homes/top'
   end
@@ -32,7 +33,10 @@ Rails.application.routes.draw do
   resources :user_rooms, only: [:show, :create]
   get 'chat/:id' => 'chats#show', as: 'chat'
   resources :chats, only: [:create]
-  # ———————————————————————————————————————————
+  # ——————カート内機能——————————————————————————
+  resources :carts, only: [:index, :create, :update, :destroy]
+  # ————————————————————————————————————————————
+  
   resources :books, only: [:new, :create, :index, :show, :edit, :update, :destroy] do
     resource :favorites, only: [:create, :destroy]
     resources :book_comments, only: [:create, :destroy]

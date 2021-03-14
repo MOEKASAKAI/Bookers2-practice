@@ -30,6 +30,14 @@
       <td>
         コメント数:<%= book.book_comments.count %>
       </td>
+      <td>
+        <%= form_with model:cart, url: carts_path, local:true do |f| %>
+          <%= f.hidden_field :user_id, :value => current_user.id %>
+          <%= f.hidden_field :book_id, :value => book.id %>
+          <%= f.hidden_field :quantity, :value => 1 %>
+          <%= f.submit "カートに入れる", class: "btn btn-primary" %>
+        <% end %>
+      </td>
     </tr>
   </tbody>
 </table>

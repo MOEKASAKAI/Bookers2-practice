@@ -5,6 +5,7 @@ class User < ApplicationRecord
   devise :registerable, :recoverable, :rememberable, :validatable
 
   has_many :books, dependent: :destroy
+  has_many :carts, dependent: :destroy
   has_many :favorites, dependent: :destroy
   has_many :book_comments, dependent: :destroy
 
