@@ -4,6 +4,9 @@ class Book < ApplicationRecord
   has_many :favorites, dependent: :destroy
   has_many :book_comments, dependent: :destroy
   
+  # book_genreのenum定義
+  enum book_genre: [ :Business, :Comics, :Technology, :Another_genre ]
+  
   validates :title, presence: true
   validates :body, presence: true, length: { maximum: 200 }
   

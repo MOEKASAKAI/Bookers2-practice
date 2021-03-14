@@ -4,6 +4,7 @@
       <th></th>
       <th>Title</th>
       <th>Opinion</th>
+      <th>Genre</th>
     </tr>
   </thead>
   <tbody>
@@ -17,6 +18,9 @@
       </td>
       <td>
         <%= book.body %>
+      </td>
+      <td>
+        <%= book.book_genre %>
       </td>
       <td id = 'favorite_form_<%= book.id %>'>
         <%= render 'favorites/favorite_form', book: book %>
