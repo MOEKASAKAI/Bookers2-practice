@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :admins
   get 'chats/show'
   get 'user_rooms/show'
   get 'rooms/show'
