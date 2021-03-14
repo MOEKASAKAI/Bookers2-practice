@@ -12,6 +12,7 @@ class BooksController < ApplicationController
     @book_comments = @book.book_comments
     @user = current_user
     @new_book = Book.new
+    @cart = Cart.new
   end
 
   def new

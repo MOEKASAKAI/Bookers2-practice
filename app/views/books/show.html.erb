@@ -11,7 +11,7 @@
     </div>
     <div class="col-md-8 offset-md-1">
       <h2>Book detail</h2>
-      <%= render 'show', book: @book %>
+      <%= render 'show', book: @book, cart: @cart %>
       <div id="comments_area">
         <%= render 'book_comments/book_comment_list', book: @book, book_comments: @book_comments %>
       </div>
