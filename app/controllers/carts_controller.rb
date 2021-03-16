@@ -5,7 +5,7 @@ class CartsController < ApplicationController
   end
 
   def create
-    @cart_book = current_user.carts.build(cart_books_params)
+    @cart_book = current_user.carts.create(cart_books_params)
     @cart_book.save
     redirect_to carts_path
   end
