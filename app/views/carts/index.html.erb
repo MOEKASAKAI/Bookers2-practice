@@ -5,27 +5,42 @@
       <th>Title</th>
       <th>Opinion</th>
       <th>Genre</th>
+      <th>カート数量</th>
     </tr>
   </thead>
   <tbody>
-    <% @carts.each do |cart| %>
-    <tr>
-      <td>
-        <%= link_to (attachment_image_tag cart.user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg"), user_path(cart.user.id) %>
-      </td>
-      <td>
-        <%= link_to cart.book.title, book_path(cart.book.id) %>
-      </td>
-      <td>
-        <%= cart.book.body %>
-      </td>
-      <td>
-        <%= cart.book.book_genre %>
-      </td>
-      <td>
-        コメント数:<%= cart.book.book_comments.count %>
-      </td>
-    </tr>
+    <% if @carts.present? %>
+      <% @carts.each do |cart| %>
+      <tr>
+        <td>
+          <%= link_to (attachment_image_tag cart.user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg"), user_path(cart.user.id) %>
+        </td>
+        <td>
+          <%= link_to cart.book.title, book_path(cart.book.id) %>
+        </td>
+        <td>
+          <%= cart.book.body %>
+        </td>
+        <td>
+          <%= cart.book.book_genre %>
+        </td>
+        <td>
+          <%= form_with model:cart, url: cart_path(cart), local:true do |f| %>
+            <%= f.select :quantity, [1,2,3,4,5,6,7,8,9,10] ,placeholder:"quantity" %>
+            <%= f.submit "変更", class: "btn btn-primary" %>
+          <% end %>
+        </td>
+        <td>
+          コメント数:<%= cart.book.book_comments.count %>
+        </td>
+      </tr>
+      <% end %>
+    <% else %>
+      <tr>
+        <td>
+          <p>カート内に商品はありません。</p>
+        </td>
+      </tr>
     <% end %>
   </tbody>
 </table>
